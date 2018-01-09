@@ -2,7 +2,7 @@
     "name": "language-iele",
     "displayName": "Language IELE",
     "description": "Syntax highlighting for IELE",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "shd101wyy",
     "repository": "https://github.com/shd101wyy/vscode-language-iele",
     "license": "MIT",
@@ -13,16 +13,25 @@
         "Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "iele",
-            "aliases": ["IELE", "iele"],
-            "extensions": [".iele"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "iele",
-            "scopeName": "source.iele",
-            "path": "./syntaxes/iele.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "iele",
+                "aliases": [
+                    "IELE",
+                    "iele"
+                ],
+                "extensions": [
+                    ".iele"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "iele",
+                "scopeName": "source.iele",
+                "path": "./syntaxes/iele.tmLanguage.json"
+            }
+        ]
     }
 }
