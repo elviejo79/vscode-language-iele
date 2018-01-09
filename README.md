@@ -1,16 +1,14 @@
-# IELE support in Atom
+# IELE support in Visual Studio Code
 
 The syntax highlighting for [IELE](https://github.com/runtimeverification/iele-semantics).
 
 This package is still under development and will be updated as I learn more about [IELE](https://github.com/runtimeverification/iele-semantics).
 
-![screen shot 2018-01-02 at 11 15 54 pm](https://user-images.githubusercontent.com/1908863/34509747-129fd2a2-f013-11e7-9c23-6a75e009b3c2.png)
+![capture](https://user-images.githubusercontent.com/1908863/34705876-329c8c52-f4c9-11e7-8bbe-5c354f9b731d.PNG)
 
 ## Installation
 
-```sh
-apm install language-iele
-```
+Search Extension `language-iele` in Marketplace. 
 
 ## References
 * [textmate language grammars](https://manual.macromates.com/en/language_grammars)

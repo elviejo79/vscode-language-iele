@@ -1,10 +1,11 @@
 {
-    "name": "iele",
-    "displayName": "iele",
+    "name": "language-iele",
+    "displayName": "Language IELE",
     "description": "Syntax highlighting for IELE",
     "version": "0.0.1",
     "publisher": "shd101wyy",
     "repository": "https://github.com/shd101wyy/vscode-language-iele",
+    "license": "MIT",
     "engines": {
         "vscode": "^1.19.0"
     },
