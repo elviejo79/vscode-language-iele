@@ -1,0 +1,178 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "IELE",
+	"scopeName": "source.iele",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"begin": "(?=(external|contract|define)\\s+)",
+			"end": "((?=#)|(?=//)|(?=\n)|(?=\\()|(?={))",
+			"comment": "Main keywords",
+			"patterns": [
+			  {
+				"match": "\\b(external|contract|define|public)\\b",
+				"captures": {
+				  "1": {
+					"name": "keyword.control"
+				  }
+				}
+			  },
+			  {
+				"include": "#global_variable"
+			  },
+			  {
+				"match": "([A-Za-z0-9\\_\\-\\$]+)(?:(\\.)([A-Za-z0-9\\_\\-\\$]+))*",
+				"captures": {
+				  "1": {
+					"name": "support.class"
+				  },
+				  "2": {
+					"name": "keyword.operator"
+				  },
+				  "3": {
+					"name": "entity.name.function"
+				  }
+				}
+			  }
+			]
+		},
+		{
+			"include": "#global_variable"
+		},
+		{
+			"include": "#local_variable"
+		},
+		{
+			"match": "\\b([A-Za-z0-9\\_\\-\\$\\.]+\\:)",
+			"name": "constant.other.basicblock"
+		},
+		{
+			"begin": "\\s*(br)",
+			"beginCaptures": {
+				"0": {
+					"name": "keyword.control"
+			  	}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#global_variable"
+			  	},
+			  	{
+					"include": "#local_variable"
+			  	},
+			  	{
+					"match": "\\b([A-Za-z0-9\\_\\-\\$\\.]+)",
+					"name": "constant.other.basicblock"
+			  	},
+			  	{
+					"include": "#comments"
+			  	}
+			]
+		},
+		{
+			"comment": "Language keywords",
+		  	"match": "\\b(ret|revert|define|public|br)\\b",
+		  	"name": "keyword.control"
+		},
+		{
+		  	"comment": "Operator-1",
+		  	"match": "\\b(call|staticcall|at|load|store|sload|sstore|log|create|copycreate|selfdestruct|deposit|init|send|gaslimit)\\b",
+		  	"name": "support.function"
+		},
+		{
+		  	"comment": "Operator-2",
+		  	"match":"\\b(iszero|not|add|sub|mul|div|exp|mod|addmod|mulmod|expmod|byte|sext|twos|and|or|xor|shift|cmp|lt|le|gt|ge|eq|ne|sha3)\\b",
+		  	"name": "support.function"
+		},
+		{
+		  	"comment": "True and false keywords",
+		  	"match": "\\b(true|false)\\b",
+		  	"name": "constant.language"
+		},
+		{
+		  	"comment": "Returns",
+		  	"match": "\\b(void)\\b",
+		  	"name": "constant.language"
+		},
+		{
+		  	"comment": "Numbers",
+		  	"match": "\\b(\\d+)\\b",
+		  	"name": "constant.numeric"
+		},
+		{
+		  	"comment": "Hexadecimal",
+		  	"match": "\\b(0[xX][a-fA-F0-9]+)\\b",
+		  	"name": "constant.numeric"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"begin": "//",
+					"beginCaptures": {
+					  "0": {
+						"name": "punctuation.definition.comment.line"
+					  }
+					},
+					"end": "$",
+					"name": "comment.line.double-slash"
+				  },
+				  {
+					"begin": "/\\*",
+					"beginCaptures": {
+					  "0": {
+						"name": "punctuation.definition.comment.begin"
+					  }
+					},
+					"end": "\\*/",
+					"endCaptures": {
+					  "0": {
+						"name": "punctuation.definition.comment.end"
+					  }
+					},
+					"name": "comment.block"
+				  }
+			]
+		},
+		"global_variable": {
+			"patterns": [
+				{
+				  	"match": "(?:\\@)([A-Za-z0-9\\_\\-\\$]+)(?:(\\.)([A-Za-z0-9\\_\\-\\$]+))*",
+				  	"captures": {
+						"1": {
+							"name": "support.class"
+						},
+						"2": {
+							"name": "keyword.operator"
+						},
+						"3": {
+							"name": "entity.name.function"
+						}
+					}
+				}
+			]
+		},
+		"local_variable": {
+			"patterns": [
+				{
+				  	"match": "(?:\\%)([A-Za-z0-9\\_\\-\\$]+)(?:(\\.)([A-Za-z0-9\\_\\-\\$]+))*",
+				 	"captures": {
+						"1": {
+							"name": "variable.parameter"
+						},
+						"2": {
+							"name": "keyword.operator"
+						},
+						"3": {
+							"name": "entity.name.function"
+						}
+				  	}
+				}
+			]
+		}
+	}
+}
