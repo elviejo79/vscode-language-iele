@@ -4,7 +4,7 @@ The syntax highlighting for [IELE](https://github.com/runtimeverification/iele-s
 
 This package is still under development and will be updated as I learn more about [IELE](https://github.com/runtimeverification/iele-semantics).
 
-![capture](https://user-images.githubusercontent.com/1908863/34705876-329c8c52-f4c9-11e7-8bbe-5c354f9b731d.PNG)
+![](https://user-images.githubusercontent.com/1908863/43973406-1a565e62-9c9d-11e8-9696-9a235cdadfae.png)
 
 ## Installation
 
