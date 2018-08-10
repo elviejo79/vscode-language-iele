@@ -7,42 +7,56 @@
 			"include": "#comments"
 		},
 		{
-			"begin": "(?=(external|contract|define)\\s+)",
+			"begin": "(?=(external|contract)\\s+)",
 			"end": "((?=#)|(?=//)|(?=\n)|(?=\\()|(?={))",
-			"comment": "Main keywords",
+			"comment": "Contract declaration",
 			"patterns": [
-			  {
-				"match": "\\b(external|contract|define|public)\\b",
-				"captures": {
-				  "1": {
-					"name": "keyword.control"
-				  }
+				{
+					"match": "\\b(contract|external)\\b",
+					"captures": {
+						"1": {
+							"name": "keyword.control"
+						}
+					}
+				},
+				{
+					"match": "([A-Za-z0-9\\_\\-\\$\\.]+|\"[^\"]+?\")",
+					"captures": {
+						"1": {
+							"name": "variable.object"
+						}
+					}
 				}
-			  },
-			  {
-				"include": "#global_variable"
-			  },
-			  {
-				"match": "([A-Za-z0-9\\_\\-\\$]+)(?:(\\.)([A-Za-z0-9\\_\\-\\$]+))*",
-				"captures": {
-				  "1": {
-					"name": "support.class"
-				  },
-				  "2": {
-					"name": "keyword.operator"
-				  },
-				  "3": {
-					"name": "entity.name.function"
-				  }
-				}
-			  }
 			]
 		},
 		{
-			"include": "#global_variable"
+			"begin": "(?=(define)\\s+)",
+			"end": "((?=#)|(?=//)|(?=\n)|(?=\\()|(?={))",
+			"comment": "Function declaration",
+			"patterns": [
+				{
+					"match": "\\b(public|define)\\b",
+					"captures": {
+						"1": {
+							"name": "keyword.control"
+						}
+					}
+				},
+				{
+					"match": "([@%]?)([A-Za-z0-9\\_\\-\\$\\.]+|\"[^\"]+?\")",
+					"captures": {
+						"1": {
+							"name": "entity.name.function"
+						},
+						"2": {
+							"name": "entity.name.function"
+						}
+					}
+				}
+			]
 		},
 		{
-			"include": "#local_variable"
+			"include": "#variable"
 		},
 		{
 			"match": "\\b([A-Za-z0-9\\_\\-\\$\\.]+\\:)",
@@ -58,18 +72,15 @@
 			"end": "$",
 			"patterns": [
 				{
-					"include": "#global_variable"
-			  	},
-			  	{
-					"include": "#local_variable"
-			  	},
-			  	{
+					"include": "#variable"
+				},
+				{
 					"match": "\\b([A-Za-z0-9\\_\\-\\$\\.]+)",
 					"name": "constant.other.basicblock"
-			  	},
-			  	{
+				},
+				{
 					"include": "#comments"
-			  	}
+				}
 			]
 		},
 		{
@@ -138,41 +149,16 @@
 				  }
 			]
 		},
-		"global_variable": {
-			"patterns": [
-				{
-				  	"match": "(?:\\@)([A-Za-z0-9\\_\\-\\$]+)(?:(\\.)([A-Za-z0-9\\_\\-\\$]+))*",
-				  	"captures": {
-						"1": {
-							"name": "support.class"
-						},
-						"2": {
-							"name": "keyword.operator"
-						},
-						"3": {
-							"name": "entity.name.function"
-						}
-					}
+		"variable": {
+    	"patterns": [{
+      	"match": "([@%])([A-Za-z0-9\\_\\-\\$\\.]+|\"[^\"]+?\")",
+      	"captures": {
+        "1": {
+				},
+        "2": {
 				}
-			]
-		},
-		"local_variable": {
-			"patterns": [
-				{
-				  	"match": "(?:\\%)([A-Za-z0-9\\_\\-\\$]+)(?:(\\.)([A-Za-z0-9\\_\\-\\$]+))*",
-				 	"captures": {
-						"1": {
-							"name": "variable.parameter"
-						},
-						"2": {
-							"name": "keyword.operator"
-						},
-						"3": {
-							"name": "entity.name.function"
-						}
-				  	}
-				}
-			]
+			}
+		}]
 		}
 	}
 }
